@@ -11,6 +11,9 @@ module.exports = {
       colors: {
         // You can customize your colors here
       },
+      fontFamily: {
+        sans: ["var(--font-inter)"],
+      },
     },
   },
   plugins: [],

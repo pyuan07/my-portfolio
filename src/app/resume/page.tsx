@@ -35,7 +35,7 @@ const ResumeContent = () => {
           </p>
           <div className="mt-6">
             <a
-              href="/resume.pdf"
+              href="/resume/Resume_Pin Yuan.pdf"
               className="inline-flex items-center gap-2 px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
               download
             >

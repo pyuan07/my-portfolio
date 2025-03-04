@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { FiGithub, FiLinkedin } from "react-icons/fi";
+import { FiDownload, FiGithub, FiLinkedin } from "react-icons/fi";
 
 const Hero = () => {
   return (
@@ -23,7 +23,7 @@ const Hero = () => {
             </h1>
 
             <h2 className="text-xl md:text-2xl font-medium text-gray-700 dark:text-gray-300">
-              Software Developer (Full Stack)
+              Software Engineer/ Web Developer (Full Stack)
             </h2>
 
             <p className="text-gray-600 dark:text-gray-400 text-lg">
@@ -39,12 +39,13 @@ const Hero = () => {
                 Contact Me
               </Link>
 
-              <Link
-                href="/projects"
-                className="px-6 py-3 border border-purple-600 dark:border-purple-400 text-purple-600 dark:text-purple-400 font-medium rounded-lg hover:bg-purple-50 dark:hover:bg-purple-950/30 transition-colors"
+              <a
+                href="/resume/Resume_Pin Yuan.pdf"
+                download
+                className="flex items-center gap-2 px-6 py-3 border border-purple-600 dark:border-purple-400 text-purple-600 dark:text-purple-400 font-medium rounded-lg hover:bg-purple-50 dark:hover:bg-purple-950/30 transition-colors"
               >
-                View Projects
-              </Link>
+                <FiDownload size={16} /> Download Resume
+              </a>
             </div>
 
             <div className="flex gap-4 pt-4">
