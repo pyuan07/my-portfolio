@@ -13,13 +13,13 @@ import {
 } from "react-icons/fi";
 
 // Replace these with your actual EmailJS credentials
-const EMAILJS_SERVICE_ID = "service_fkiys9k";
-const EMAILJS_TEMPLATE_ID = "template_fb3jm6t";
-const EMAILJS_PUBLIC_KEY = "7gLY3QCSNQj0-q_61";
+const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "";
+const EMAILJS_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "";
+const EMAILJS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "";
 
 export default function ContactPage() {
   const form = useRef<HTMLFormElement>(null);
-  
+
   useEffect(() => {
     if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
       console.warn('EmailJS environment variables are not properly configured');
