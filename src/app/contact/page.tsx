@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import {
@@ -19,6 +19,13 @@ const EMAILJS_PUBLIC_KEY = "7gLY3QCSNQj0-q_61";
 
 export default function ContactPage() {
   const form = useRef<HTMLFormElement>(null);
+  
+  useEffect(() => {
+    if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
+      console.warn('EmailJS environment variables are not properly configured');
+    }
+  }, []);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",

@@ -21,89 +21,45 @@ type Project = {
 const projects: Project[] = [
   {
     id: "project1",
-    title: "E-Commerce Platform",
+    title: "My Portfolio",
     description:
-      "A full-featured e-commerce platform with product listings, cart functionality, user authentication, and payment integration.",
+      "A portfolio for a Software Engineer / Web Developer",
     longDescription:
-      "This comprehensive e-commerce solution includes product management, inventory tracking, user accounts, shopping cart, checkout process, and payment processing through Stripe. The platform features responsive design for optimal viewing on any device, advanced filtering and search capabilities, and an admin dashboard for managing products, orders, and customer data.",
-    image: "/projects/project1.jpg",
-    technologies: ["React", "Node.js", "MongoDB", "Express", "Stripe"],
-    github: "https://github.com/pyuan07/project1",
-    demo: "https://project1-demo.com",
-    featured: true,
-    category: "Web App",
-  },
-  {
-    id: "project2",
-    title: "AI-Powered Task Manager",
-    description:
-      "A smart task management application using AI to prioritize tasks, suggest schedules, and provide productivity insights.",
-    longDescription:
-      "This innovative task manager leverages OpenAI's GPT models to analyze your tasks, understand priorities, and suggest optimal scheduling. Features include natural language task entry, smart categorization, automatic priority detection, customizable workflows, productivity analytics, and cross-device synchronization. The application uses machine learning to adapt to your work habits and improve recommendations over time.",
-    image: "/projects/project2.jpg",
+      "This portfolio template is designed specifically for developers who want to showcase their work without spending too much time on design and implementation. Built with Next.js and Tailwind CSS, it features a responsive design, dark/light mode support, customizable sections for projects, skills, and experience, and built-in contact form functionality. The template is designed to be easily customizable with minimal code changes.",
+    image: "/projects/project1.png",
     technologies: [
       "Next.js",
       "TypeScript",
-      "OpenAI API",
-      "PostgreSQL",
       "Tailwind",
     ],
-    github: "https://github.com/pyuan07/project2",
-    demo: "https://project2-demo.com",
+    github: "https://github.com/pyuan07/my-portfolio",
+    demo: "https://pyuan-portfolio.vercel.app/",
     featured: true,
-    category: "AI & ML",
-  },
-  {
-    id: "project3",
-    title: "Real-time Collaboration Tool",
-    description:
-      "A collaborative workspace allowing multiple users to edit documents, chat, and manage projects in real-time.",
-    longDescription:
-      "This real-time collaboration platform enables teams to work together seamlessly regardless of location. It features concurrent document editing with conflict resolution, presence indicators showing who's currently viewing or editing, instant messaging and thread-based discussions, file sharing and version history, kanban boards for project management, and detailed activity logs and notifications. WebSocket technology ensures all changes are synchronized instantly across all users.",
-    image: "/projects/project3.jpg",
-    technologies: ["React", "Firebase", "WebSockets", "Material UI", "Redux"],
-    github: "https://github.com/pyuan07/project3",
-    demo: "https://project3-demo.com",
-    featured: true,
-    category: "Web App",
-  },
-  {
-    id: "project4",
-    title: "Mobile Fitness Tracker",
-    description:
-      "A cross-platform mobile app for tracking workouts, nutrition, and health metrics with visualization and goal setting.",
-    longDescription:
-      "This comprehensive fitness tracking app helps users monitor their health and fitness journey. Features include customizable workout plans and exercise library, nutrition tracking with barcode scanning for food items, health metrics monitoring (weight, heart rate, sleep, etc.), goal setting and progress visualization, activity reminders and motivational notifications, and social sharing capabilities for connecting with friends.",
-    image: "/projects/project4.jpg",
-    technologies: ["React Native", "Redux", "Firebase", "Chart.js", "Node.js"],
-    github: "https://github.com/pyuan07/project4",
-    demo: "https://project4-demo.com",
-    featured: false,
-    category: "Mobile App",
-  },
-  {
-    id: "project5",
-    title: "Developer Portfolio Template",
-    description:
-      "A customizable portfolio template for developers to showcase their skills and projects with minimal setup.",
-    longDescription:
-      "This portfolio template is designed specifically for developers who want to showcase their work without spending too much time on design and implementation. Built with Next.js and Tailwind CSS, it features a responsive design, dark/light mode support, customizable sections for projects, skills, and experience, SEO optimization, and built-in contact form functionality. The template is designed to be easily customizable with minimal code changes.",
-    image: "/projects/project5.jpg",
-    technologies: ["Next.js", "Tailwind CSS", "TypeScript", "Framer Motion"],
-    github: "https://github.com/pyuan07/project5",
-    demo: "https://project5-demo.com",
-    featured: false,
     category: "Web Design",
   },
   {
-    id: "project6",
-    title: "Weather Forecast Application",
+    id: "project2",
+    title: "VoxSpend",
     description:
-      "A modern weather application providing real-time forecasts, radar maps, and severe weather alerts.",
+      "VoxSpend is a smart expense tracking application designed to simplify financial management through voice input.",
     longDescription:
-      "This weather application provides users with accurate, up-to-date weather information from around the world. Features include current conditions and hourly/daily forecasts, interactive radar and satellite maps, severe weather alerts and notifications, location-based automatic weather updates, historical weather data and trends, and a clean, intuitive interface optimized for both desktop and mobile devices. The app uses multiple weather APIs to ensure reliability and accuracy.",
+      "By integrating voice-to-text (Deepgram) and AI-powered processing (OpenRouter), users can effortlessly add transactions by speaking naturally. VoxSpend aims to provide a seamless and intuitive experience for users to monitor their spending without manual data entry. Currently still debugging and implementing during personal free time. This project is a personal project developed solely by me with AI helps on UI.",
+    image: "/projects/project2.png",
+    technologies: ["React", "shadcn/ui", "TypeScript", "ASP.Net Web Api", "SQLLite", "OpenRouter Ai", "Deepgram"],
+    github: "https://github.com/pyuan07/VoxSpend",
+    demo: "https://youtu.be/9D5igNpvaX8",
+    featured: false,
+    category: "Web App",
+  },
+  {
+    id: "project6",
+    title: "TODO",
+    description:
+      "TODO",
+    longDescription:
+      "TODO",
     image: "/projects/project6.jpg",
-    technologies: ["Vue.js", "Vuex", "Weather API", "Leaflet.js", "SCSS"],
+    technologies: [],
     github: "https://github.com/pyuan07/project6",
     demo: "https://project6-demo.com",
     featured: false,
@@ -112,13 +68,24 @@ const projects: Project[] = [
 ];
 
 const ProjectCard = ({ project }: { project: Project }) => {
+  // Simplify the button text function
+  const getDemoButtonText = () => {
+    if (project.demo.includes('youtu') || project.demo.includes('youtube')) {
+      return 'Video Demo';
+    } else if (/\.(jpg|jpeg|png|gif)$/.test(project.demo)) {
+      return 'View Preview';
+    } else {
+      return 'Live Demo';
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       viewport={{ once: true }}
-      className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
+      className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow flex flex-col"
     >
       <div className="relative h-48 w-full">
         <Image
@@ -130,7 +97,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
         />
       </div>
 
-      <div className="p-6">
+      <div className="p-6 flex flex-col flex-grow">
         <div className="flex justify-between items-start mb-2">
           <h3 className="text-xl font-bold text-gray-800 dark:text-white">
             {project.title}
@@ -140,7 +107,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
           </span>
         </div>
 
-        <p className="text-gray-600 dark:text-gray-300 mb-4">
+        <p className="text-gray-600 dark:text-gray-300 mb-4 flex-grow">
           {project.description}
         </p>
 
@@ -155,22 +122,24 @@ const ProjectCard = ({ project }: { project: Project }) => {
           ))}
         </div>
 
-        <div className="flex justify-between">
+        {/* Standardized button area at bottom */}
+        <div className="flex mt-auto pt-4 border-t border-gray-200 dark:border-gray-700">
           <a
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400"
+            className="flex items-center gap-1 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 flex-1 justify-center"
           >
             <FiGithub size={16} /> <span>Code</span>
           </a>
+          <div className="w-px bg-gray-200 dark:bg-gray-700"></div>
           <a
             href={project.demo}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400"
+            className="flex items-center gap-1 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 flex-1 justify-center"
           >
-            <FiExternalLink size={16} /> <span>Live Demo</span>
+            <FiExternalLink size={16} /> <span>{getDemoButtonText()}</span>
           </a>
         </div>
       </div>

@@ -25,7 +25,7 @@ export default function AboutPage() {
             <div className="md:w-1/3">
               <div className="relative w-full aspect-square max-w-sm mx-auto rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/profile-about.jpg"
+                  src="/about-picture.jpg"
                   alt="Pin Yuan"
                   fill
                   style={{ objectFit: "cover" }}

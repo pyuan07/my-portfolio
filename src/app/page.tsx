@@ -1,13 +1,13 @@
 import Hero from '@/components/home/Hero';
 import SkillsSection from '@/components/home/SkillsSection';
-import FeaturedProjects from '@/components/home/FeaturedProjects';
+import FeaturedExperience from "@/components/home/FeaturedExperience";
 
 export default function Home() {
   return (
     <>
       <Hero />
       <SkillsSection />
-      <FeaturedProjects />
+      <FeaturedExperience />
     </>
   );
 }
