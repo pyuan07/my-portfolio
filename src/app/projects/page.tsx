@@ -43,28 +43,28 @@ const projects: Project[] = [
     description:
       "VoxSpend is a smart expense tracking application designed to simplify financial management through voice input.",
     longDescription:
-      "By integrating voice-to-text (Deepgram) and AI-powered processing (OpenRouter), users can effortlessly add transactions by speaking naturally. VoxSpend aims to provide a seamless and intuitive experience for users to monitor their spending without manual data entry. Currently still debugging and implementing during personal free time. This project is a personal project developed solely by me with AI helps on UI.",
+      "By integrating voice-to-text (Deepgram) and AI-powered processing (OpenRouter), users can effortlessly add transactions by speaking naturally. VoxSpend aims to provide a seamless and intuitive experience for users to monitor their spending without manual data entry. Currently still debugging and implementing during personal free time. This project is a personal hobby project developed solely by me with AI helps on UI.",
     image: "/projects/project2.png",
-    technologies: ["React", "shadcn/ui", "TypeScript", "ASP.Net Web Api", "SQLLite", "OpenRouter Ai", "Deepgram"],
+    technologies: ["React", "shadcn/ui", "TypeScript", "ASP.Net Web Api", "postgres", "OpenRouter Ai", "Deepgram"],
     github: "https://github.com/pyuan07/VoxSpend",
-    demo: "https://youtu.be/9D5igNpvaX8",
-    featured: false,
+    demo: "https://voxspend-demo.vercel.app/login",
+    featured: true,
     category: "Web App",
   },
-  {
-    id: "project6",
-    title: "TODO",
-    description:
-      "TODO",
-    longDescription:
-      "TODO",
-    image: "/projects/project6.jpg",
-    technologies: [],
-    github: "https://github.com/pyuan07/project6",
-    demo: "https://project6-demo.com",
-    featured: false,
-    category: "Web App",
-  },
+  // {
+  //   id: "project6",
+  //   title: "TODO",
+  //   description:
+  //     "TODO",
+  //   longDescription:
+  //     "TODO",
+  //   image: "/projects/project6.jpg",
+  //   technologies: [],
+  //   github: "https://github.com/pyuan07/project6",
+  //   demo: "https://project6-demo.com",
+  //   featured: false,
+  //   category: "Web App",
+  // },
 ];
 
 const ProjectCard = ({ project }: { project: Project }) => {

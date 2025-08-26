@@ -195,9 +195,11 @@ const ResumeContent = () => {
                   company: "Morpheus Consulting Pte Ltd, Singapore",
                   period: "2023 - Present (2 years 1 month)",
                   responsibilities: [
-                    "Integrated and enhanced in-house systems and websites to support business growth and improve user experience.",
-                    "Developed tools and applications to monitor system performance and ensure operational stability.",
-                    "Provided Production Support by investigating, troubleshooting, and resolving reported issues and bugs.",
+                    "Engineered and optimized real-time, high-traffic data pipelines with Redis and RabbitMQ, achieving sub-second to ~2s latency and high system stability.",
+                    "Enhanced in-house business systems and backoffice, improving system performance and reliability, and integrated new business requirements.",
+                    "Implemented observability with Prometheus, Grafana, and Elasticsearch, plus anomaly detection for proactive incident response.",
+                    "Provided production support, troubleshooting and fixing critical and tricky issues (like multithreading & concurrency issue...)",
+                    "Transferred to subsidiary (Dodgson Matrix Sdn Bhd) in 2025 and continue the same system development and train new engineers, accelerating team onboarding.",
                   ],
                 },
                 {

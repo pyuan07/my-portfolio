@@ -18,7 +18,7 @@ const experiences: Experience[] = [
     title: "Software Engineer",
     company: "Morpheus Consulting Pte Ltd, Singapore",
     period: "2023 - Present",
-    description: "Integrated and enhanced in-house systems and websites to support business growth and improve user experience.",
+    description: "Engineered real-time & high-traffic data pipelines, enhanced business systems, implemented monitoring solutions, and provided production support for the system and backoffice.",
   },
   {
     id: "exp2",
