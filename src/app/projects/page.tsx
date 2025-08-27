@@ -49,7 +49,7 @@ const projects: Project[] = [
     github: "https://github.com/pyuan07/VoxSpend",
     demo: "https://voxspend-demo.vercel.app/login",
     featured: true,
-    category: "Web App",
+    category: "Hobby Project / Web App",
   },
   // {
   //   id: "project6",
