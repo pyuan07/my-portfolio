@@ -4,7 +4,6 @@ import Link from "next/link";
 import {
   FiGithub,
   FiLinkedin,
-  FiTwitter,
   FiMail,
   FiArrowUp,
 } from "react-icons/fi";

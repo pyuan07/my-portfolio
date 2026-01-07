@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { FiGithub, FiExternalLink, FiFilter } from "react-icons/fi";
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FiGithub, FiExternalLink, FiFilter, FiFolder } from "react-icons/fi";
 
 type Project = {
   id: string;
@@ -25,7 +26,7 @@ const projects: Project[] = [
     description:
       "A portfolio for a Software Engineer / Web Developer",
     longDescription:
-      "This portfolio template is designed specifically for developers who want to showcase their work without spending too much time on design and implementation. Built with Next.js and Tailwind CSS, it features a responsive design, dark/light mode support, customizable sections for projects, skills, and experience, and built-in contact form functionality. The template is designed to be easily customizable with minimal code changes.",
+      "This portfolio template is designed specifically for developers who want to showcase their work without spending too much time on design and implementation. Built with Next.js and Tailwind CSS, it features a responsive design, dark/light mode support, customizable sections for projects, skills, and experience, and built-in contact form functionality.",
     image: "/projects/project1.png",
     technologies: [
       "Next.js",
@@ -43,32 +44,20 @@ const projects: Project[] = [
     description:
       "VoxSpend is a smart expense tracking application designed to simplify financial management through voice input.",
     longDescription:
-      "By integrating voice-to-text (Deepgram) and AI-powered processing (OpenRouter), users can effortlessly add transactions by speaking naturally. VoxSpend aims to provide a seamless and intuitive experience for users to monitor their spending without manual data entry. Currently still debugging and implementing during personal free time. This project is a personal hobby project developed solely by me with AI helps on UI.",
+      "By integrating voice-to-text (Deepgram) and AI-powered processing (OpenRouter), users can effortlessly add transactions by speaking naturally. VoxSpend aims to provide a seamless and intuitive experience for users to monitor their spending without manual data entry.",
     image: "/projects/project2.png",
     technologies: ["React", "shadcn/ui", "TypeScript", "ASP.Net Web Api", "postgres", "OpenRouter Ai", "Deepgram"],
     github: "https://github.com/pyuan07/VoxSpend",
     demo: "https://voxspend-demo.vercel.app/login",
     featured: true,
-    category: "Hobby Project / Web App",
+    category: "Web App",
   },
-  // {
-  //   id: "project6",
-  //   title: "TODO",
-  //   description:
-  //     "TODO",
-  //   longDescription:
-  //     "TODO",
-  //   image: "/projects/project6.jpg",
-  //   technologies: [],
-  //   github: "https://github.com/pyuan07/project6",
-  //   demo: "https://project6-demo.com",
-  //   featured: false,
-  //   category: "Web App",
-  // },
+  // Placeholder for future projects
 ];
 
+const categories = ["All", "Web Design", "Web App", "Mobile App", "Other"];
+
 const ProjectCard = ({ project }: { project: Project }) => {
-  // Simplify the button text function
   const getDemoButtonText = () => {
     if (project.demo.includes('youtu') || project.demo.includes('youtube')) {
       return 'Video Demo';
@@ -81,104 +70,162 @@ const ProjectCard = ({ project }: { project: Project }) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      viewport={{ once: true }}
-      className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow flex flex-col"
+      layout
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.9 }}
+      transition={{ duration: 0.3 }}
+      className="glass-card rounded-2xl overflow-hidden group flex flex-col h-full hover:border-primary/30"
     >
-      <div className="relative h-48 w-full">
+      <div className="relative h-56 w-full overflow-hidden">
         <Image
           src={project.image}
           alt={project.title}
           fill
           style={{ objectFit: "cover" }}
-          className="transition-transform duration-500 hover:scale-105"
+          className="transition-transform duration-700 group-hover:scale-110"
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-60" />
+        <div className="absolute top-4 left-4">
+           <span className="px-3 py-1 bg-black/50 backdrop-blur-md rounded-full text-xs font-medium text-white border border-white/10">
+             {project.category}
+           </span>
+        </div>
       </div>
 
       <div className="p-6 flex flex-col flex-grow">
-        <div className="flex justify-between items-start mb-2">
-          <h3 className="text-xl font-bold text-gray-800 dark:text-white">
+        <div className="mb-4">
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-violet-600 transition-colors">
             {project.title}
           </h3>
-          <span className="text-xs bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 px-2 py-1 rounded-full">
-            {project.category}
-          </span>
+          <p className="text-gray-600 dark:text-gray-300 line-clamp-3 text-sm leading-relaxed">
+            {project.description}
+          </p>
         </div>
 
-        <p className="text-gray-600 dark:text-gray-300 mb-4 flex-grow">
-          {project.description}
-        </p>
+        <div className="mt-auto space-y-4">
+          <div className="flex flex-wrap gap-2">
+            {project.technologies.slice(0, 4).map((tech, index) => (
+              <span
+                key={index}
+                className="text-xs font-medium px-2.5 py-1 rounded-md bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300 border border-violet-200 dark:border-violet-800"
+              >
+                {tech}
+              </span>
+            ))}
+             {project.technologies.length > 4 && (
+               <span className="text-xs font-medium px-2.5 py-1 rounded-md bg-gray-100 dark:bg-gray-800 text-gray-500">
+                 +{project.technologies.length - 4} more
+               </span>
+             )}
+          </div>
 
-        <div className="flex flex-wrap gap-2 mb-4">
-          {project.technologies.map((tech, index) => (
-            <span
-              key={index}
-              className="text-xs bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded-full"
+          <div className="flex items-center gap-3 pt-4 border-t border-gray-100 dark:border-gray-700/50">
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white font-medium text-sm hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
             >
-              {tech}
-            </span>
-          ))}
-        </div>
-
-        {/* Standardized button area at bottom */}
-        <div className="flex mt-auto pt-4 border-t border-gray-200 dark:border-gray-700">
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 flex-1 justify-center"
-          >
-            <FiGithub size={16} /> <span>Code</span>
-          </a>
-          <div className="w-px bg-gray-200 dark:bg-gray-700"></div>
-          <a
-            href={project.demo}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 flex-1 justify-center"
-          >
-            <FiExternalLink size={16} /> <span>{getDemoButtonText()}</span>
-          </a>
+              <FiGithub size={18} /> Code
+            </a>
+            <a
+              href={project.demo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-violet-600 text-white font-medium text-sm hover:bg-violet-700 transition-colors shadow-lg shadow-violet-600/20"
+            >
+              <FiExternalLink size={18} /> {getDemoButtonText()}
+            </a>
+          </div>
         </div>
       </div>
     </motion.div>
   );
 };
 
+import BackgroundDecoration from "@/components/layout/BackgroundDecoration";
+
 export default function ProjectsPage() {
+  const [activeCategory, setActiveCategory] = useState("All");
+
+  const filteredProjects = projects.filter(project => 
+    activeCategory === "All" || project.category === activeCategory
+  );
+
   return (
-    <>
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          {/* Header */}
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-800 dark:text-white">
-              My Projects
-            </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              A collection of projects I've worked on, showcasing my skills and
-              interests in web development and software engineering.
-            </p>
-          </div>
+    <div className="min-h-screen pt-32 pb-20">
+      {/* Background decoration */}
+      <BackgroundDecoration />
 
-          {/* Filter Section - For future enhancement */}
-          <div className="flex justify-center mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-100 dark:bg-purple-900/30 rounded-full text-purple-600 dark:text-purple-400">
-              <FiFilter size={18} />
-              <span className="font-medium">All Projects</span>
-            </div>
-          </div>
+      <div className="container mx-auto px-4">
+        {/* Header */}
+        <div className="text-center mb-16 max-w-3xl mx-auto">
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-4xl md:text-6xl font-bold mb-6 tracking-tight"
+          >
+            Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-blue-500">Projects</span>
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="text-xl text-gray-600 dark:text-gray-400"
+          >
+            A curated selection of my work in software engineering and full-stack development.
+          </motion.p>
+        </div>
 
-          {/* Projects Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project) => (
+        {/* Filter */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="flex flex-wrap justify-center gap-2 mb-16"
+        >
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => setActiveCategory(category)}
+              className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
+                activeCategory === category
+                  ? "bg-violet-600 text-white shadow-lg shadow-violet-600/25 scale-105"
+                  : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700"
+              }`}
+            >
+              {category}
+            </button>
+          ))}
+        </motion.div>
+
+        {/* Projects Grid */}
+        <motion.div 
+          layout
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}
-          </div>
-        </div>
-      </section>
-    </>
+          </AnimatePresence>
+        </motion.div>
+
+         {/* Empty State */}
+         {filteredProjects.length === 0 && (
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="text-center py-20"
+            >
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gray-100 dark:bg-gray-800 mb-4 text-gray-400">
+                <FiFolder size={32} />
+              </div>
+              <p className="text-xl text-gray-500">No projects found in this category.</p>
+            </motion.div>
+          )}
+      </div>
+    </div>
   );
 }

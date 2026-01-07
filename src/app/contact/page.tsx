@@ -6,16 +6,22 @@ import emailjs from "@emailjs/browser";
 import {
   FiMail,
   FiMapPin,
-  FiPhone,
   FiSend,
   FiGithub,
   FiLinkedin,
+  FiMessageSquare,
+  FiUser,
+  FiAtSign,
+  FiType,
+  FiPhone
 } from "react-icons/fi";
 
 // Replace these with your actual EmailJS credentials
 const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "";
 const EMAILJS_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "";
 const EMAILJS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "";
+
+import BackgroundDecoration from "@/components/layout/BackgroundDecoration";
 
 export default function ContactPage() {
   const form = useRef<HTMLFormElement>(null);
@@ -85,295 +91,263 @@ export default function ContactPage() {
   };
 
   return (
-    <>
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          {/* Header */}
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-800 dark:text-white">
-              Get In Touch
-            </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Have a question or want to work together? Feel free to reach out!
-            </p>
+    <div className="min-h-screen pt-32 pb-20 relative overflow-hidden">
+       {/* Background Decoration */}
+       <BackgroundDecoration />
+
+      <div className="container mx-auto px-4">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="inline-block px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary dark:text-primary-foreground text-sm font-semibold mb-4"
+          >
+            Contact
+          </motion.div>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="text-4xl md:text-6xl font-bold mb-6 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400"
+          >
+            Let's <span className="text-primary">Connect.</span>
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
+          >
+             Have a project in mind or just want to chat? I'm always open to discussing new opportunities and ideas.
+          </motion.p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 max-w-6xl mx-auto">
+          {/* Contact Info Column */}
+          <div className="lg:col-span-5 space-y-8">
+            {/* Info Cards */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3 }}
+              className="glass-card p-8 rounded-3xl"
+            >
+              <h3 className="text-lg font-semibold mb-6 flex items-center gap-2">
+                 <span className="w-1 h-6 bg-primary rounded-full"></span>
+                 Contact Details
+              </h3>
+              
+              <div className="space-y-6">
+                <a href="mailto:pinyuan13225@gmail.com" className="flex items-start gap-4 group p-4 rounded-2xl hover:bg-white/50 dark:hover:bg-gray-800/50 transition-colors border border-transparent hover:border-primary/10">
+                  <div className="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <FiMail size={24} />
+                  </div>
+                  <div>
+                    <span className="text-sm text-gray-500 font-medium">Email</span>
+                    <p className="text-gray-900 dark:text-white font-medium group-hover:text-primary transition-colors">pinyuan13225@gmail.com</p>
+                  </div>
+                </a>
+
+                <div className="flex items-start gap-4 p-4 rounded-2xl hover:bg-white/50 dark:hover:bg-gray-800/50 transition-colors border border-transparent hover:border-primary/10">
+                  <div className="w-12 h-12 rounded-xl bg-green-100 dark:bg-green-900/30 text-green-600 flex items-center justify-center">
+                    <FiPhone size={24} />
+                  </div>
+                  <div>
+                    <span className="text-sm text-gray-500 font-medium">Phone</span>
+                    <div className="flex flex-col">
+                       <a 
+                         href="https://wa.me/6588955717"
+                         target="_blank"
+                         rel="noopener noreferrer"
+                         className="text-gray-900 dark:text-white font-medium hover:text-green-600 dark:hover:text-green-500 transition-colors flex items-center gap-2"
+                       >
+                         +65 8895 5717 (WhatsApp)
+                       </a>
+                       <p className="text-gray-900 dark:text-white font-medium">+60 18 375 8389</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4 p-4 rounded-2xl hover:bg-white/50 dark:hover:bg-gray-800/50 transition-colors border border-transparent hover:border-primary/10">
+                  <div className="w-12 h-12 rounded-xl bg-purple-100 dark:bg-purple-900/30 text-purple-600 flex items-center justify-center">
+                    <FiMapPin size={24} />
+                  </div>
+                  <div>
+                    <span className="text-sm text-gray-500 font-medium">Location</span>
+                    <p className="text-gray-900 dark:text-white font-medium">Malaysia (Johor) & Singapore</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Socials Card */}
+             <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.4 }}
+              className="glass-card p-8 rounded-3xl"
+            >
+               <h3 className="text-lg font-semibold mb-6 flex items-center gap-2">
+                 <span className="w-1 h-6 bg-primary rounded-full"></span>
+                 Social Profiles
+              </h3>
+              
+              <div className="flex gap-4">
+                 <a
+                    href="https://github.com/pyuan07"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 p-4 rounded-2xl bg-gray-100 dark:bg-gray-800/50 hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors flex flex-col items-center gap-2 group border border-transparent hover:border-gray-300 dark:hover:border-gray-600"
+                  >
+                    <FiGithub size={28} className="text-gray-700 dark:text-gray-300 group-hover:text-black dark:group-hover:text-white transition-colors"/>
+                    <span className="text-sm font-medium">GitHub</span>
+                  </a>
+                  <a
+                    href="https://linkedin.com/in/pinyuanng"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 p-4 rounded-2xl bg-blue-50 dark:bg-blue-900/20 hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors flex flex-col items-center gap-2 group border border-transparent hover:border-blue-200 dark:hover:border-blue-800"
+                  >
+                    <FiLinkedin size={28} className="text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform"/>
+                    <span className="text-sm font-medium text-blue-700 dark:text-blue-300">LinkedIn</span>
+                  </a>
+              </div>
+            </motion.div>
           </div>
 
-          <div className="max-w-5xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-              {/* Contact Information */}
-              <div className="md:col-span-1 space-y-8">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg"
+          {/* Form Column */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.3 }}
+            className="lg:col-span-7"
+          >
+            <div className="glass-card p-8 md:p-10 rounded-3xl h-full border-t-4 border-t-primary">
+              {submitted ? (
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="text-center py-20 h-full flex flex-col items-center justify-center"
                 >
-                  <div className="flex flex-col items-center text-center">
-                    <div className="bg-purple-100 dark:bg-purple-900/30 w-14 h-14 rounded-full flex items-center justify-center text-purple-600 dark:text-purple-400 mb-4">
-                      <FiMail size={24} />
-                    </div>
-                    <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-2">
-                      Email
-                    </h3>
-                    <a
-                      href="mailto:pinyuan13225@gmail.com"
-                      className="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400"
-                    >
-                      pinyuan13225@gmail.com
-                    </a>
+                  <div className="w-24 h-24 bg-green-100 dark:bg-green-900/20 rounded-full flex items-center justify-center text-green-500 mb-6">
+                    <FiSend size={40} />
                   </div>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                  className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg"
-                >
-                  <div className="flex flex-col items-center text-center">
-                    <div className="bg-purple-100 dark:bg-purple-900/30 w-14 h-14 rounded-full flex items-center justify-center text-purple-600 dark:text-purple-400 mb-4">
-                      <FiPhone size={24} />
-                    </div>
-                    <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-2">
-                      Phone
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-300">
-                      +6588955717
-                    </p>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.4 }}
-                  className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg"
-                >
-                  <div className="flex flex-col items-center text-center">
-                    <div className="bg-purple-100 dark:bg-purple-900/30 w-14 h-14 rounded-full flex items-center justify-center text-purple-600 dark:text-purple-400 mb-4">
-                      <FiMapPin size={24} />
-                    </div>
-                    <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-2">
-                      Location
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-300">
-                      18, Jalan Murni 3, Taman Murni,
-                      <br />
-                      86000 Kluang, Johor, Malaysia
-                    </p>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.6 }}
-                  className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg"
-                >
-                  <div className="flex flex-col items-center">
-                    <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-4">
-                      Follow Me
-                    </h3>
-                    <div className="flex space-x-4">
-                      <a
-                        href="https://github.com/pyuan07"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400"
-                        aria-label="GitHub"
-                      >
-                        <FiGithub size={24} />
-                      </a>
-                      <a
-                        href="https://linkedin.com/in/pinyuanng"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400"
-                        aria-label="LinkedIn"
-                      >
-                        <FiLinkedin size={24} />
-                      </a>
-                    </div>
-                  </div>
-                </motion.div>
-              </div>
-
-              {/* Contact Form */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="md:col-span-2 bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg"
-              >
-                {submitted ? (
-                  <div className="text-center py-12">
-                    <div className="bg-green-100 dark:bg-green-900/30 w-20 h-20 rounded-full flex items-center justify-center text-green-600 dark:text-green-400 mx-auto mb-6">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth={1.5}
-                        stroke="currentColor"
-                        className="w-10 h-10"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                        />
-                      </svg>
-                    </div>
-                    <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">
-                      Message Sent!
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-300 mb-6">
-                      Thank you for your message. I'll get back to you as soon
-                      as possible.
-                    </p>
-                    <button
-                      onClick={() => setSubmitted(false)}
-                      className="px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-colors"
-                    >
-                      Send Another Message
-                    </button>
-                  </div>
-                ) : (
-                  <form
-                    ref={form}
-                    onSubmit={handleSubmit}
-                    className="space-y-6"
+                  <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Message Sent!</h3>
+                  <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-md">
+                    Thanks for reaching out! I've received your message and will get back to you as soon as possible.
+                  </p>
+                  <button
+                    onClick={() => setSubmitted(false)}
+                    className="px-8 py-3 bg-white border border-gray-200 dark:bg-gray-800 dark:border-gray-700 rounded-full font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
                   >
-                    <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">
-                      Send a Message
-                    </h3>
-
-                    {error && (
-                      <div className="bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 p-4 rounded-lg mb-6">
-                        {error}
-                      </div>
-                    )}
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                      <div>
-                        <label
-                          htmlFor="name"
-                          className="block text-gray-700 dark:text-gray-300 mb-2"
-                        >
-                          Name
-                        </label>
-                        <input
+                    Send Another Message
+                  </button>
+                </motion.div>
+              ) : (
+                <form ref={form} onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                       <label htmlFor="name" className="text-sm font-medium text-gray-700 dark:text-gray-300 ml-1">Your Name</label>
+                       <div className="relative">
+                         <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                           <FiUser />
+                         </div>
+                         <input
                           type="text"
                           id="name"
                           name="user_name"
                           value={formData.name}
                           onChange={handleChange}
                           required
-                          className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 outline-none transition-all dark:text-white"
-                          placeholder="Your Name"
+                          className="w-full pl-11 pr-4 py-4 bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"
+                          placeholder="John Doe"
                         />
-                      </div>
-                      <div>
-                        <label
-                          htmlFor="email"
-                          className="block text-gray-700 dark:text-gray-300 mb-2"
-                        >
-                          Email
-                        </label>
-                        <input
+                       </div>
+                    </div>
+                    <div className="space-y-2">
+                       <label htmlFor="email" className="text-sm font-medium text-gray-700 dark:text-gray-300 ml-1">Your Email</label>
+                       <div className="relative">
+                         <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                           <FiAtSign />
+                         </div>
+                         <input
                           type="email"
                           id="email"
                           name="user_email"
                           value={formData.email}
                           onChange={handleChange}
                           required
-                          className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 outline-none transition-all dark:text-white"
-                          placeholder="Your email"
+                          className="w-full pl-11 pr-4 py-4 bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"
+                          placeholder="john@example.com"
                         />
-                      </div>
+                       </div>
                     </div>
+                  </div>
 
-                    <div>
-                      <label
-                        htmlFor="subject"
-                        className="block text-gray-700 dark:text-gray-300 mb-2"
-                      >
-                        Subject
-                      </label>
-                      <input
+                  <div className="space-y-2">
+                     <label htmlFor="subject" className="text-sm font-medium text-gray-700 dark:text-gray-300 ml-1">Subject</label>
+                     <div className="relative">
+                       <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                         <FiType />
+                       </div>
+                       <input
                         type="text"
                         id="subject"
                         name="subject"
                         value={formData.subject}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 outline-none transition-all dark:text-white"
-                        placeholder="Subject of your message"
+                        className="w-full pl-11 pr-4 py-4 bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"
+                        placeholder="What's this about?"
                       />
-                    </div>
+                     </div>
+                  </div>
 
-                    <div>
-                      <label
-                        htmlFor="message"
-                        className="block text-gray-700 dark:text-gray-300 mb-2"
-                      >
-                        Message
-                      </label>
-                      <textarea
+                  <div className="space-y-2">
+                     <label htmlFor="message" className="text-sm font-medium text-gray-700 dark:text-gray-300 ml-1">Message</label>
+                     <div className="relative">
+                       <div className="absolute left-4 top-6 text-gray-400">
+                         <FiMessageSquare />
+                       </div>
+                       <textarea
                         id="message"
                         name="message"
                         value={formData.message}
                         onChange={handleChange}
                         rows={6}
                         required
-                        className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 outline-none transition-all dark:text-white"
-                        placeholder="Your message..."
+                        className="w-full pl-11 pr-4 py-4 bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all resize-none"
+                        placeholder="Tell me about your project..."
                       />
-                    </div>
+                     </div>
+                  </div>
 
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className={`flex items-center justify-center gap-2 w-full px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-500 text-white font-medium rounded-lg shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 ${
-                        isSubmitting ? "opacity-70 cursor-not-allowed" : ""
-                      }`}
-                    >
-                      {isSubmitting ? (
-                        <>
-                          <svg
-                            className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                          >
-                            <circle
-                              className="opacity-25"
-                              cx="12"
-                              cy="12"
-                              r="10"
-                              stroke="currentColor"
-                              strokeWidth="4"
-                            ></circle>
-                            <path
-                              className="opacity-75"
-                              fill="currentColor"
-                              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                            ></path>
-                          </svg>
-                          Sending...
-                        </>
-                      ) : (
-                        <>
-                          <FiSend size={20} /> Send Message
-                        </>
-                      )}
-                    </button>
-                  </form>
-                )}
-              </motion.div>
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className={`w-full py-4 px-6 bg-transparent border-2 border-primary text-gray-900 dark:text-white font-bold rounded-full shadow-lg hover:bg-primary/10 hover:shadow-primary/30 hover:-translate-y-1 transition-all flex items-center justify-center gap-2 ${
+                      isSubmitting ? "opacity-70 cursor-not-allowed" : ""
+                    }`}
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                        <span>Sending...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Send Message</span>
+                        <FiSend />
+                      </>
+                    )}
+                  </button>
+                </form>
+              )}
             </div>
-          </div>
+          </motion.div>
         </div>
-      </section>
-    </>
+      </div>
+    </div>
   );
 }
