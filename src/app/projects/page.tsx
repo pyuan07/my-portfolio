@@ -4,6 +4,8 @@ import Image from "next/image";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiGithub, FiExternalLink, FiFilter, FiFolder } from "react-icons/fi";
+import SpotlightCard from "@/components/ui/SpotlightCard";
+import BackgroundDecoration from "@/components/layout/BackgroundDecoration";
 
 type Project = {
   id: string;
@@ -75,7 +77,9 @@ const ProjectCard = ({ project }: { project: Project }) => {
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9 }}
       transition={{ duration: 0.3 }}
-      className="glass-card rounded-2xl overflow-hidden group flex flex-col h-full hover:border-primary/30"
+    >
+    <SpotlightCard
+      className="group flex flex-col h-full"
     >
       <div className="relative h-56 w-full overflow-hidden">
         <Image
@@ -140,11 +144,11 @@ const ProjectCard = ({ project }: { project: Project }) => {
           </div>
         </div>
       </div>
+    </SpotlightCard>
     </motion.div>
   );
 };
 
-import BackgroundDecoration from "@/components/layout/BackgroundDecoration";
 
 export default function ProjectsPage() {
   const [activeCategory, setActiveCategory] = useState("All");

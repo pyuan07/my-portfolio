@@ -5,6 +5,7 @@ import { FiDownload, FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 import { motion } from "framer-motion";
 
 import Typewriter from "typewriter-effect";
+import MagneticButton from "@/components/ui/MagneticButton";
 
 const Hero = () => {
   return (
@@ -79,14 +80,15 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
             >
-              <Link
-                href="/contact"
-                className="group relative px-8 py-4 bg-gradient-to-r from-violet-600 to-blue-600 text-white font-bold rounded-full shadow-lg shadow-violet-500/20 hover:shadow-violet-500/40 hover:-translate-y-1 transition-all duration-300 overflow-hidden"
-              >
-                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
-                <span className="relative z-10 flex items-center gap-2">
-                  Contact Me <FiMail className="group-hover:animate-wiggle" />
-                </span>
+
+
+              <Link href="/contact">
+                <MagneticButton className="group relative px-8 py-4 bg-gradient-to-r from-violet-600 to-blue-600 text-white font-bold rounded-full shadow-lg shadow-violet-500/20 hover:shadow-violet-500/40 transition-all duration-300 overflow-hidden">
+                  <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                  <span className="relative z-10 flex items-center gap-2">
+                    Contact Me <FiMail className="group-hover:animate-wiggle" />
+                  </span>
+                </MagneticButton>
               </Link>
 
               <a
