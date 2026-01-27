@@ -192,7 +192,7 @@ export default function AboutPage() {
             {[
               {
                 title: "Certified ASP.NET Developer",
-                issuer: "Microsoft",
+                issuer: "APU",
                 year: "2022",
                 color: "blue",
                 url: "https://www.credly.com/badges/dc3aedb1-db0f-4840-901b-734947a5d661/linked_in_profile"
