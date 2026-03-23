@@ -54,8 +54,23 @@ const projects: Project[] = [
     featured: true,
     category: "Web App",
   },
+  {
+    id: "meza-helper",
+    title: "Meza Helper",
+    description:
+      "A Flutter-built utility and companion app for Pokémon Mezastar players to manage trainer profiles and access a comprehensive database of game tags.",
+    longDescription:
+      "Meza Helper is a feature-rich web application designed to enhance the Pokémon Mezastar arcade experience. Developed using Flutter and deployed as a PWA on Vercel, the app provides players with a centralized hub for tracking their Trainer IDs and progression. It features a detailed 'Tag Dex' covering multiple series, a strategic elemental effectiveness chart, and visual guides for performing game mechanics like Z-Moves. With integrated QR scanning capabilities and a mobile-first design, it serves as a practical, on-the-go tool for players at the game cabinet.",
+    image: "/projects/meza-helper.png",
+    technologies: ["Flutter", "CanvasKit", "PWA", "Vercel", "ZXing"],
+    github: "https://github.com/pyuan07/meza-helper",
+    demo: "https://meza-helper.vercel.app/",
+    featured: true,
+    category: "Mobile App",
+  },
   // Placeholder for future projects
 ];
+
 
 const categories = ["All", "Web Design", "Web App", "Mobile App", "Other"];
 
@@ -77,70 +92,71 @@ const ProjectCard = ({ project }: { project: Project }) => {
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9 }}
       transition={{ duration: 0.3 }}
+      className="h-full"
     >
-    <SpotlightCard
-      className="group flex flex-col h-full"
-    >
-      <div className="relative h-56 w-full overflow-hidden">
-        <Image
-          src={project.image}
-          alt={project.title}
-          fill
-          style={{ objectFit: "cover" }}
-          className="transition-transform duration-700 group-hover:scale-110"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-60" />
-        <div className="absolute top-4 left-4">
-           <span className="px-3 py-1 bg-black/50 backdrop-blur-md rounded-full text-xs font-medium text-white border border-white/10">
-             {project.category}
-           </span>
-        </div>
-      </div>
-
-      <div className="p-6 flex flex-col flex-grow">
-        <div className="mb-4">
-          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-violet-600 transition-colors">
-            {project.title}
-          </h3>
-          <p className="text-gray-600 dark:text-gray-300 line-clamp-3 text-sm leading-relaxed">
-            {project.description}
-          </p>
+    <SpotlightCard className="group h-full">
+      <div className="flex flex-col h-full">
+        <div className="relative h-56 w-full shrink-0 overflow-hidden">
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            style={{ objectFit: "cover" }}
+            className="transition-transform duration-700 group-hover:scale-110"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-60" />
+          <div className="absolute top-4 left-4">
+             <span className="px-3 py-1 bg-black/50 backdrop-blur-md rounded-full text-xs font-medium text-white border border-white/10">
+               {project.category}
+             </span>
+          </div>
         </div>
 
-        <div className="mt-auto space-y-4">
-          <div className="flex flex-wrap gap-2">
-            {project.technologies.slice(0, 4).map((tech, index) => (
-              <span
-                key={index}
-                className="text-xs font-medium px-2.5 py-1 rounded-md bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300 border border-violet-200 dark:border-violet-800"
-              >
-                {tech}
-              </span>
-            ))}
-             {project.technologies.length > 4 && (
-               <span className="text-xs font-medium px-2.5 py-1 rounded-md bg-gray-100 dark:bg-gray-800 text-gray-500">
-                 +{project.technologies.length - 4} more
-               </span>
-             )}
+        <div className="p-6 flex flex-col flex-grow">
+          <div className="mb-4">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-violet-600 transition-colors">
+              {project.title}
+            </h3>
+            <p className="text-gray-600 dark:text-gray-300 line-clamp-3 text-sm leading-relaxed">
+              {project.description}
+            </p>
           </div>
 
-          <div className="flex items-center gap-3 pt-4 border-t border-gray-100 dark:border-gray-700/50">
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white font-medium text-sm hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-            >
-              <FiGithub size={18} /> Code
-            </a>
-            <a
-              href={project.demo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-violet-600 text-white font-medium text-sm hover:bg-violet-700 transition-colors shadow-lg shadow-violet-600/20"
-            >
-              <FiExternalLink size={18} /> {getDemoButtonText()}
-            </a>
+          <div className="flex flex-col flex-grow">
+            <div className="flex flex-wrap gap-2 mb-4">
+              {project.technologies.slice(0, 4).map((tech, index) => (
+                <span
+                  key={index}
+                  className="text-xs font-medium px-2.5 py-1 rounded-md bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300 border border-violet-200 dark:border-violet-800"
+                >
+                  {tech}
+                </span>
+              ))}
+               {project.technologies.length > 4 && (
+                 <span className="text-xs font-medium px-2.5 py-1 rounded-md bg-gray-100 dark:bg-gray-800 text-gray-500">
+                   +{project.technologies.length - 4} more
+                 </span>
+               )}
+            </div>
+
+            <div className="mt-auto flex items-center gap-3 pt-4 border-t border-gray-100 dark:border-gray-700/50">
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white font-medium text-sm hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+              >
+                <FiGithub size={18} /> Code
+              </a>
+              <a
+                href={project.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-violet-600 text-white font-medium text-sm hover:bg-violet-700 transition-colors shadow-lg shadow-violet-600/20"
+              >
+                <FiExternalLink size={18} /> {getDemoButtonText()}
+              </a>
+            </div>
           </div>
         </div>
       </div>
