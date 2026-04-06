@@ -220,7 +220,7 @@ const ResumeContent = () => {
                     <h3 className="text-xl font-bold text-gray-900 dark:text-white">Professional Summary</h3>
                   </div>
                   <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-justify">
-                    I'm a Software Engineer based in Malaysia (Johor) and Singapore, specializing in building RESTful APIs and responsive web applications using modern technologies. I graduated from Asia Pacific University with a Bachelor's degree in Software Engineering, earning First Class Honours. I am driven by using code to make life more effective and efficient, and I am passionate about AI integration and exploring the latest technologies.
+                    Software Engineer with 3+ years of experience building high-performance, real-time, event-driven systems. Strong in backend development using C#, ASP.NET Core, Redis, and RabbitMQ, with additional experience in frontend development using MVC, React and TypeScript. Focused on low-latency processing, system reliability, and building end-to-end features across backend and frontend. Experienced in production support and system observability.
                   </p>
                 </section>
 
@@ -237,33 +237,33 @@ const ResumeContent = () => {
                     {[
                       {
                         title: "Software Engineer",
-                        company: "Morpheus Consulting Pte Ltd, Singapore",
-                        period: "2023 - Present (2 years 1 month)",
+                        company: "Dodgson Matrix Sdn Bhd, Malaysia",
+                        period: "Mar 2025 - Present (1 year)",
                         responsibilities: [
-                          "Engineered and optimized real-time, high-traffic data pipelines with Redis and RabbitMQ, achieving sub-second to ~2s latency and high system stability.",
-                          "Enhanced in-house business systems and backoffice, improving system performance and reliability, and integrated new business requirements.",
-                          "Implemented observability with Prometheus, Grafana, and Elasticsearch, plus anomaly detection for proactive incident response.",
-                          "Provided production support, troubleshooting and fixing critical and tricky issues (like multithreading & concurrency issue...)",
-                          "Transferred to subsidiary (Dodgson Matrix Sdn Bhd) in 2025 and continue the same system development and train new engineers, accelerating team onboarding.",
+                          "Transferred internally from Morpheus Consulting Pte Ltd, Singapore; continuing on the same system and responsibilities",
+                          "Mentored new engineers, accelerating onboarding and improving team productivity",
+                        ],
+                      },
+                      {
+                        title: "Software Engineer",
+                        company: "Morpheus Consulting Pte Ltd, Singapore",
+                        period: "Mar 2023 - Mar 2025 (2 years)",
+                        responsibilities: [
+                          "Designed and maintained a high-traffic, real-time event-driven data processing system which integrating multiple external providers",
+                          "Built data ingestion pipelines to normalize and transform external event feeds into internal DTOs, distributing them via RabbitMQ and Redis Pub/Sub to downstream",
+                          "Optimized system for low-latency processing and high throughput, ensuring stable performance under concurrent workloads",
+                          "Developed frontend (React, TypeScript, MVC) for internal tools, backoffice, and monitoring dashboards",
+                          "Implemented observability using Prometheus and Grafana, enabling real-time monitoring, alerting, and faster incident response",
+                          "Provided L2/L3 production support, troubleshooting complex issues, such as concurrency bugs and data inconsistencies",
                         ],
                       },
                       {
                         title: "Software Engineer (Freelance)",
                         company: "Soft Rock Technologies Sdn Bhd, Malaysia",
-                        period: "2021 - 2022 (7 months)",
+                        period: "Jul 2021 - Jun 2022 (1 year)",
                         responsibilities: [
-                          "Mainly involved in the development, enhancement and customization of Recipe Management Module.",
-                        ],
-                      },
-                      {
-                        title: "Software Engineer (Internship)",
-                        company: "Soft Rock Technologies Sdn Bhd, Malaysia",
-                        period: "2021 (5 months)",
-                        responsibilities: [
-                          "Involved in company software design, development, integration and testing.",
-                          "Researched & Developed Smart Factory Website, especially Recipe Management Module.",
-                          "Learned a lot of useful skills, technologies and knowledge as well as the real-world development life cycle (Agile Scrum) and project structure of ASP.NET Core API, MVC.",
-                          "Developed server backend with RESTful API and client frontend with MVC.",
+                          "Research & Develop Smart Factory Website, especially Recipe Management Module.",
+                          "Developed backend with RESTful ASP.NET Core API and frontend with MVC",
                         ],
                       },
                     ].map((job, i) => (
@@ -271,21 +271,21 @@ const ResumeContent = () => {
                          <div className="absolute top-0 -left-[9px] w-4 h-4 rounded-full bg-white dark:bg-gray-800 border-4 border-orange-500 group-hover:scale-125 transition-transform" />
                          
                          <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-2">
-                           <h4 className="text-lg font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">{job.title}</h4>
-                           <span className="text-sm font-medium text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-900/20 px-3 py-1 rounded-full">{job.period}</span>
+                            <h4 className="text-lg font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">{job.title}</h4>
+                            <span className="text-sm font-medium text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-900/20 px-3 py-1 rounded-full">{job.period}</span>
                          </div>
                          
                          <p className="text-gray-700 dark:text-gray-300 font-medium mb-4 flex items-center gap-2">
-                           <FiBriefcase className="text-gray-400" size={14} /> {job.company}
+                            <FiBriefcase className="text-gray-400" size={14} /> {job.company}
                          </p>
                          
-                         <ul className="space-y-2">
-                           {job.responsibilities.map((resp, idx) => (
-                             <li key={idx} className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed flex items-start gap-2">
-                               <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-gray-300 dark:bg-gray-600 shrink-0" />
-                               {resp}
-                             </li>
-                           ))}
+                         <ul className="space-y-2 mb-4">
+                            {job.responsibilities.map((resp, idx) => (
+                              <li key={idx} className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed flex items-start gap-2">
+                                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-gray-300 dark:bg-gray-600 shrink-0" />
+                                {resp}
+                              </li>
+                            ))}
                          </ul>
                       </div>
                     ))}
