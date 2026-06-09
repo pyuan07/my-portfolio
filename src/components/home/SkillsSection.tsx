@@ -151,7 +151,7 @@ const SkillsSection = () => {
       </div>
 
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {skillCategories.map((category, index) => (
             <motion.div
               key={category.title}
@@ -159,12 +159,8 @@ const SkillsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className={`glass-card p-8 rounded-2xl ${
-                category.title === "DevOps"
-                  ? "md:col-span-1 lg:col-span-1"
-                  : category.title === "Tools & Others"
-                  ? "md:col-span-2 lg:col-span-2"
-                  : ""
+              className={`glass-card p-8 rounded-2xl h-full ${
+                category.title === "Tools & Others" ? "md:col-span-2 lg:col-span-2" : ""
               }`}
             >
               <div className="flex items-center gap-4 mb-8">
