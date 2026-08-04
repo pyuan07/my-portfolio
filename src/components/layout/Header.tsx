@@ -1,21 +1,22 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useSyncExternalStore } from "react";
 import { useTheme } from "next-themes";
 import { usePathname } from "next/navigation";
 import { FiMenu, FiX, FiMoon, FiSun } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Header = () => {
-  const [mounted, setMounted] = useState(false);
+  const mounted = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false,
+  );
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { theme, setTheme } = useTheme();
   const pathname = usePathname();
-
-  // Avoid hydration mismatch
-  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     const handleScroll = () => {
